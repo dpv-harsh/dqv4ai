@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
 
   /* --- List Hierarchy management --- */
 
-  for (let list of document.querySelectorAll(".concept-list ul li ul")) {
+  for (let list of document.querySelectorAll(".concept-list ul")) {
     let tog = document.createElement("div");
     tog.innerHTML = list.previousSibling.textContent;
     tog.className = "toggle";
@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
 
     // do not place btn controls for lists that aren't nested
     // more than 3 levels deep
-    if(list.querySelector("li ul li ul") == null) { continue; }
+    if(list.querySelector("li ul") == null) { continue; }
 
     let btn_expand = document.createElement("button");
     btn_expand.innerHTML = "expand all";

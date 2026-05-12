@@ -82,7 +82,7 @@ tr.technical-detail {
   padding-right: 5px;
   box-shadow: 1px 1px 1px #AAA;
 }
-.concept-list ul li ul { display: none; }
+.concept-list ul { display: none; }
 .toggle.show + ul { display: block; }
 .btn-expand, .btn-collapse {
   background-color: white;

@@ -94,8 +94,21 @@
 {% endblock INTRODUCTION %}
 {% block VOCAB %}
   <section id="vocab-core">
-    <h2>Vocab</h2>
-    {{ list_hierarchy(modules['core']['classes']) }}
+    <h2>Vocabulary</h2>
+    <section id="dimensions">
+      <h3>Dimensions</h3>
+      {{ list_hierarchy(modules['core']['classes'], head='dqv:Dimension') }}
+    </section>
+    <section id="categories">
+      <h3>Categories</h3>
+      {% for category in vocab|filter_type_dict('dqv:Category') %}
+        {% set category = category|resolve_concepts %}
+        <section id="{{ category['Term'] }}">
+          <h4>{{ category['skos:prefLabel'] }}</h4>
+          {{ list_hierarchy(modules['core']['classes'], head='dqv:Dimension', mode=None, prop='dqv:inCategory', value=category['prefixed']) }}
+        </section>
+      {% endfor %}
+    </section>
   </section>
 {% endblock VOCAB %}
 
