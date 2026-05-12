@@ -442,27 +442,27 @@ def organise_hierarchy(terms:list, top:str=None, mode:str=None) -> dict:
     # From each term, populate parents and children lists
     if top is None:
         for key, term in terms.items():
-            # DEBUG(f"{key=}")
+            DEBUG(f"{key=}")
             if mode == "taxonomy":
                 parents = ensure_list(term['rdf:type'])
             else:
                 parents = []
             if 'skos:broader' in term: # has parents
                 parents = parents + ensure_list(term['skos:broader']) # get parents
-            # DEBUG(f"{parents=}")
+            DEBUG(f"{parents=}")
             for parent in parents: # check parents are not present in terms
                 # if parents are in terms, that means this isn't a top
                 # concept and shouldn't be returned
-                # DEBUG(f"{parent=} {prefix_from_iri(parent)=}")
+                DEBUG(f"{parent=} {prefix_from_iri(parent)=}")
                 if prefix_from_iri(parent) in terms:
-                    # DEBUG(f"{parent=} in terms")
+                    DEBUG(f"{parent=} in terms")
                     break
             else:
-                # DEBUG(f"parent not in terms")
+                DEBUG(f"parent not in terms")
                 results[key] = term
             # else:
             #     results[key] = term
-        # DEBUG(f"{top=} {results.keys()=}")
+        DEBUG(f"{top=} {results.keys()=}")
         return {k:results[k] for k in sorted(results.keys(), key=str.casefold)}
     # else: top is not None
     for key, term in terms.items():
@@ -751,7 +751,11 @@ def get_additional_annotations(concept:dict) -> list:
         if '-' in key: continue # e.g. prefLabel-en
         vocab = key.split(':')[0]
         if vocab in common_annotations: continue
-        key = DATA.concepts[key]['skos:prefLabel']
+        DEBUG(concept['iri'])
+        DEBUG(concept.keys())
+        DEBUG(key)
+        if key in DATA.concepts:
+            key = DATA.concepts[key]['skos:prefLabel']
         values = []
         for val in sorted(ensure_list(value)):
             if val in DATA.concepts:

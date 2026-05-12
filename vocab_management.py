@@ -129,12 +129,12 @@ EXPORT_RDF_PATH = f'public'
 IMPORT_CSV_PATH = './vocab_csv'
 CSVFILES = {
     'iso-25059': {
-        'iso-25059': {
+        'core': {
             'taxonomy': f'{IMPORT_CSV_PATH}/DIS_25059.csv',
         }
     },
     'eu-aiact': {
-        'eu-aiact': {
+        'core': {
             'taxonomy': f'{IMPORT_CSV_PATH}/eu_aiact.csv',
         }
     },
@@ -200,6 +200,7 @@ RDF_VOCABS = {
         'template': 'template_aiqv_iso_25059.jinja2',
         'export': 'public/iso-25059',
         'modules': {
+            'core': 'public/iso-25059/modules/core.ttl',
         },
         'module-template': {
         },
@@ -219,6 +220,7 @@ RDF_VOCABS = {
         'template': 'template_aiqv_eu_aiact.jinja2',
         'export': 'public/eu-aiact',
         'modules': {
+            'core': 'public/iso-25059/modules/core.ttl',
         },
         'module-template': {
         },
