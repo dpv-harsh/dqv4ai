@@ -39,6 +39,7 @@ SCHEMA['taxonomy'] = {
     'Definition': vocab_funcs.construct_definition,
     'ParentTerm': None,
     'ParentType': vocab_funcs.construct_parent_taxonomy,
+    'InstanceOf': vocab_funcs.construct_parent_taxonomy,
     'Value': vocab_funcs.construct_value,
     'RelatedTerms': vocab_funcs.construct_related_terms,
     'Relation': None,
@@ -49,8 +50,11 @@ SCHEMA['taxonomy'] = {
     'Status': vocab_funcs.construct_status,
     'Contributors': vocab_funcs.construct_contributors,
     'Resolution': vocab_funcs.construct_resolution,
+    'Category': vocab_funcs.construct_category,
+    'Dimension': vocab_funcs.construct_dimension,
     'ExtraFunction': vocab_funcs.extra_function,
     'ExtraParams': None,  
+    'Notes': None,
 }
 SCHEMA['taxonomy-risk'] = SCHEMA['taxonomy'].copy()
 SCHEMA['taxonomy-risk']['ParentTerm'] = None

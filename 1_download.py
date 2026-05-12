@@ -11,7 +11,7 @@ SHEET_TABS = (
     'DIS_25059',
     'eu_aiact',
 )
-DOCS_FOLDER = '.'
+DOCS_FOLDER = 'vocab_csv'
 
 from urllib import request
 

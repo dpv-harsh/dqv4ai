@@ -259,24 +259,7 @@ def construct_scope_note(item, data, namespace, header):
 def construct_source(item, data, namespace, header):
     triples = []
     term = _term_with_namespace(data['Term'], namespace)
-    if item.startswith('('):
-        split_items = item.split(';')
-    elif ',' in item and '://' not in item:
-        split_items = item.split(',')
-    else:
-        split_items = [item]
-    for item in split_items:
-        if item.startswith('('):
-            label, url = item.replace('(','').replace(')','').split(',')
-            label = label.strip()
-            url = url.strip()
-            node = BNode(f"b{hashlib.md5(url.encode('UTF-8')).hexdigest()}")
-            triples.append((node, RDF.type, SCHEMA.WebPage))
-            triples.append((node, SCHEMA.name, Literal(label)))
-            triples.append((node, SCHEMA.url, Literal(url)))
-            triples.append((term, DCT.source, node))
-        else:
-            triples.append((term, DCT.source, Literal(item, lang='en')))
+    triples.append((term, DCT.source, Literal(item, lang='en')))
     return triples
 
 
@@ -638,4 +621,22 @@ def add_triple_subject(term, data, namespace, header):
     return triples
 
 
+def construct_category(term, data, namespace, header):
+    triples = []
+    term = term = namespace[data['Term']]
+    categories = data['Category']
+    if not categories: return []
+    for category in categories.split(','):
+        category = NAMESPACES[category.split(':')[0]][category.split(':')[1]]
+        triples.append((term, DQV.inCategory, category))
+    return triples
 
+def construct_dimension(term, data, namespace, header):
+    triples = []
+    term = term = namespace[data['Term']]
+    dimensions = data['Dimension']
+    if not dimensions: return []
+    for dimension in dimensions.split(','):
+        dimension = NAMESPACES[dimension.split(':')[0]][dimension.split(':')[1]]
+        triples.append((term, DQV.indimension, dimension))
+    return triples

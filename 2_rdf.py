@@ -285,33 +285,6 @@ def serialize_graph(triples:list, filepath:str, vocab:str, hook:str=None) -> Non
     graph.add((vocab_iri, RDF.type, PROFILE.Profile))
     graph.add((vocab_iri, PROFILE.isProfileOf, RDFS['']))
     graph.add((vocab_iri, PROFILE.isProfileOf, SKOS['']))
-    if metadata['profile:isProfileOf']:
-        graph.add((vocab_iri, PROFILE.isProfileOf, URIRef(str(NAMESPACES[metadata['profile:isProfileOf']])[:-1])))
-    # Add links to guides, primer, examples
-    graph.add((vocab_iri, PROFILE.hasResource, URIRef('https://w3id.org/dpv/primer')))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), PROFILE.hasRole, ROLE.guidance))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), RDF.type, PROFILE.ResourceDescriptor))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), PROFILE.hasArtifact, URIRef('https://w3id.org/dpv/primer')))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), DCTERMS.title, Literal("Primer for Data Privacy Vocabulary")))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), DCTERMS.format, URIRef("https://www.iana.org/assignments/media-types/text/html")))
-    graph.add((URIRef('https://w3id.org/dpv/primer'), DCTERMS.conformsTo, URIRef("https://www.w3.org/TR/html/")))
-
-    graph.add((vocab_iri, PROFILE.hasResource, URIRef('https://w3id.org/dpv/guides')))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), RDF.type, PROFILE.ResourceDescriptor))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), PROFILE.hasRole, ROLE.guidance))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), PROFILE.hasArtifact, URIRef('https://w3id.org/dpv/guides')))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), DCTERMS.title, Literal("Guides for Data Privacy Vocabulary")))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), DCTERMS.format, URIRef("https://www.iana.org/assignments/media-types/text/html")))
-    graph.add((URIRef('https://w3id.org/dpv/guides'), DCTERMS.conformsTo, URIRef("https://www.w3.org/TR/html/")))
-
-    graph.add((vocab_iri, PROFILE.hasResource, URIRef('https://w3id.org/dpv/examples')))
-    graph.add((URIRef('https://w3id.org/dpv/examples'), RDF.type, PROFILE.ResourceDescriptor))
-    graph.add((URIRef('https://w3id.org/dpv/examples'), PROFILE.hasRole, ROLE.guidance))
-    graph.add((URIRef('https://w3id.org/dpv/examples'), PROFILE.hasArtifact, URIRef('https://w3id.org/dpv/examples')))
-    if vocab != 'dex':
-        graph.add((URIRef('https://w3id.org/dpv/examples'), DCTERMS.title, Literal(RDF_VOCABS['dex']['metadata']['dct:title'])))
-    graph.add((URIRef('https://w3id.org/dpv/examples'), DCTERMS.format, URIRef("https://www.iana.org/assignments/media-types/text/html")))
-    graph.add((URIRef('https://w3id.org/dpv/examples'), DCTERMS.conformsTo, URIRef("https://www.w3.org/TR/html/")))
 
     # HTML specification
     artifact = URIRef(vocab_iri + f'#serialisation-html')
@@ -578,12 +551,14 @@ def _parse_write(vocab, vocab_data, write=True):
             # csvdata is a list of dicts containing column:value
             for row in csvdata:
                 if not row['Term']: # skip empty rows
+                    INFO('skipped empty no Term')
                     continue
                 row = {x.strip():y.strip() for x,y in row.items()}
                 # If there is no 'Status' column in the row, then skip -
                 # because it might be empty row (quirk of Google export)
                 # or it might be working notes not meant to be in RDF
                 if 'Status' not in row:
+                    INFO('skipped no Status')
                     continue
                 # Filter out proposed concepts - they are to be collected
                 # and listed separately in another file
@@ -654,12 +629,6 @@ def _generate_triples(includelist=None):
     if includelist is None:
         return
 
-    if includelist and 'dex' not in includelist:
-        # examples are loaded and added to the graph from dex, 
-        # and then serialised in the vocab output using vann:example, 
-        # so it is essential to always load this
-        includelist.append('dex')
-        skiplist.append('dex')
     # iterate over all CSV files for specific vocab e.g. dpv
     for vocab, vocab_data in CSVFILES.items():
         if vocab in includelist:
