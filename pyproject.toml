@@ -1,0 +1,11 @@
+[project]
+name = "aiqv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "rdflib>=7.6.0",
+    "requests>=2.34.0",
+    "xlsx2csv>=0.8.6",
+]
