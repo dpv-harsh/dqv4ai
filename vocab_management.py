@@ -196,9 +196,9 @@ RDF_VOCABS = {
     #     },
     # },
     'iso-25059': {
-        'vocab': f'public/iso/iso-25059.ttl',
+        'vocab': f'public/iso-25059/iso-25059.ttl',
         'template': 'template_aiqv_iso_25059.jinja2',
-        'export': 'public/aiqv/iso-25059',
+        'export': 'public/iso-25059',
         'modules': {
         },
         'module-template': {
