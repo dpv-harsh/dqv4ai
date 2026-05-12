@@ -128,14 +128,16 @@ EXPORT_RDF_PATH = f'public'
 # === csv-files ===
 IMPORT_CSV_PATH = './vocab_csv'
 CSVFILES = {
-    'aiqv': {
+    'iso-25059': {
         'iso-25059': {
             'taxonomy': f'{IMPORT_CSV_PATH}/DIS_25059.csv',
-        },
+        }
+    },
+    'eu-aiact': {
         'eu-aiact': {
             'taxonomy': f'{IMPORT_CSV_PATH}/eu_aiact.csv',
-        },
-    }
+        }
+    },
 }
 
 # === translations ===
@@ -170,17 +172,55 @@ TRANSLATIONS_MISSING_FILE = f"{IMPORT_CSV_PATH}/translations_missing.json"
 # How to do this?
 # load all vocabulary files - create a global dict
 RDF_VOCABS = {
-    'aiqv': {
-        'vocab': f'public/aiqv.ttl',
-        'template': 'template_aiqv.jinja2',
-        'export': 'public',
+    # 'aiqv': {
+    #     'vocab': f'public/aiqv.ttl',
+    #     'template': 'template_aiqv.jinja2',
+    #     'export': 'public',
+    #     'modules': {
+    #         'iso-25059': f'aiqv/iso/iso-25059.ttl',
+    #         'eu-aiact': f'aiqv/eu-aiact/eu-aiact.ttl',
+    #     },
+    #     'module-template': {
+    #         'iso-25059': 'template_aiqv_iso_25059.jinja2',
+    #         'eu-aiact': 'template_aiqv_eu_aiact.jinja2',
+    #     },
+    #     'metadata': {
+    #         "dct:title": "AIQV",
+    #         "dct:description": "AIQV",
+    #         "dct:created": "2026-05-12",
+    #         "dct:modified": "2026-05-12",
+    #         "dct:creator": "Harshvardhan J. Pandit",
+    #         "schema:version": "0.1",
+    #         "profile:isProfileOf": "",
+    #         "bibo:status": "published",
+    #     },
+    # },
+    'iso-25059': {
+        'vocab': f'public/iso/iso-25059.ttl',
+        'template': 'template_aiqv_iso_25059.jinja2',
+        'export': 'public/aiqv/iso-25059',
         'modules': {
-            'iso-25059': f'aiqv/iso/iso-25059.ttl',
-            'eu-aiact': f'aiqv/eu-aiact/eu-aiact.ttl',
         },
         'module-template': {
-            'iso-25059': 'template_aiqv_iso_25059.jinja2',
-            'eu-aiact': 'template_aiqv_eu_aiact.jinja2',
+        },
+        'metadata': {
+            "dct:title": "AIQV ISO-25059",
+            "dct:description": "AIQV",
+            "dct:created": "2026-05-12",
+            "dct:modified": "2026-05-12",
+            "dct:creator": "Harshvardhan J. Pandit",
+            "schema:version": "0.1",
+            "profile:isProfileOf": "",
+            "bibo:status": "published",
+        },
+    },
+    'eu-aiact': {
+        'vocab': f'public/eu-aiact/eu-aiact.ttl',
+        'template': 'template_aiqv_eu_aiact.jinja2',
+        'export': 'public/eu-aiact',
+        'modules': {
+        },
+        'module-template': {
         },
         'metadata': {
             "dct:title": "AIQV",
@@ -200,6 +240,14 @@ RDF_STRUCTURE = {
     'aiqv': {
         'main': f'{EXPORT_RDF_PATH}',
         'modules': f'{EXPORT_RDF_PATH}',
+    },
+    'iso-25059': {
+        'main': f'{EXPORT_RDF_PATH}/iso-25059',
+        'modules': f'{EXPORT_RDF_PATH}/iso-25059/modules',
+    },
+    'eu-aiact': {
+        'main': f'{EXPORT_RDF_PATH}/eu-aiact',
+        'modules': f'{EXPORT_RDF_PATH}/eu-aiact/modules',
     },
 }
 

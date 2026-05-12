@@ -73,4 +73,5 @@ de-gdng,https://w3id.org/dpv/legal/de/gdng#,GDNG (DE) concepts extending DPV,28/
 in-dpdp,https://w3id.org/dpv/legal/in/dpdp#,DPDP (IN) concepts extending DPV,22/02/2026,approved,,,
 aiqv,https://w3id.org/aiqv#,AIQV,12/05/2026,approved,,,
 iso,https://w3id.org/aiqv/iso-25059#,DQV,12/05/2026,approved,,,
+iso-25059,https://w3id.org/aiqv/iso-25059#,DQV,12/05/2026,approved,,,
 eu-aiact,https://w3id.org/aiqv/eu-aiact#,DQV,12/05/2026,approved,,,
