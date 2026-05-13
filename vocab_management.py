@@ -117,13 +117,13 @@ NS.ns = { k:v for k,v in NAMESPACES.items() }
 # === Import/Export for RDF and HTML ===
 
 # Root folder to import RDF files from
-IMPORT_PATH = f'public'
+IMPORT_PATH = f'docs'
 # Root folder to export HTML files to
-EXPORT_PATH = f'public'
+EXPORT_PATH = f'docs'
 # Root folder where Jinja2 templates are stored
 TEMPLATE_PATH = '.'
 # RDF to be stored in folder
-EXPORT_RDF_PATH = f'public'
+EXPORT_RDF_PATH = f'docs'
 
 # === csv-files ===
 IMPORT_CSV_PATH = './vocab_csv'
@@ -172,35 +172,12 @@ TRANSLATIONS_MISSING_FILE = f"{IMPORT_CSV_PATH}/translations_missing.json"
 # How to do this?
 # load all vocabulary files - create a global dict
 RDF_VOCABS = {
-    # 'aiqv': {
-    #     'vocab': f'public/aiqv.ttl',
-    #     'template': 'template_aiqv.jinja2',
-    #     'export': 'public',
-    #     'modules': {
-    #         'iso-25059': f'aiqv/iso/iso-25059.ttl',
-    #         'eu-aiact': f'aiqv/eu-aiact/eu-aiact.ttl',
-    #     },
-    #     'module-template': {
-    #         'iso-25059': 'template_aiqv_iso_25059.jinja2',
-    #         'eu-aiact': 'template_aiqv_eu_aiact.jinja2',
-    #     },
-    #     'metadata': {
-    #         "dct:title": "AIQV",
-    #         "dct:description": "AIQV",
-    #         "dct:created": "2026-05-12",
-    #         "dct:modified": "2026-05-12",
-    #         "dct:creator": "Harshvardhan J. Pandit",
-    #         "schema:version": "0.1",
-    #         "profile:isProfileOf": "",
-    #         "bibo:status": "published",
-    #     },
-    # },
     'iso-25059': {
-        'vocab': f'public/iso-25059/iso-25059.ttl',
+        'vocab': f'docs/iso-25059/iso-25059.ttl',
         'template': 'template_aiqv_iso_25059.jinja2',
-        'export': 'public/iso-25059',
+        'export': 'docs/iso-25059',
         'modules': {
-            'core': 'public/iso-25059/modules/core.ttl',
+            'core': 'docs/iso-25059/modules/core.ttl',
         },
         'module-template': {
         },
@@ -216,11 +193,11 @@ RDF_VOCABS = {
         },
     },
     'eu-aiact': {
-        'vocab': f'public/eu-aiact/eu-aiact.ttl',
+        'vocab': f'docs/eu-aiact/eu-aiact.ttl',
         'template': 'template_aiqv_eu_aiact.jinja2',
-        'export': 'public/eu-aiact',
+        'export': 'docs/eu-aiact',
         'modules': {
-            'core': 'public/eu-aiact/modules/core.ttl',
+            'core': 'docs/eu-aiact/modules/core.ttl',
         },
         'module-template': {
         },
