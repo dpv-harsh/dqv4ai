@@ -4,73 +4,22 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}{{data[vocab_name+'-metadata']['dct:title']}} ({{vocab_name|upper}}){% endblock title %}</title>
+  <title>{% block title %}DQV4AI{% endblock title %}</title>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   {% block RESPEC %}
   <script class="remove">
    // All config options at https://respec.org/docs/ 
    var respecConfig = {
-    shortName: "pd",
-    title: "{{data[vocab_name+'-metadata']['dct:title']}} ({{vocab_name|upper}})",
-    subtitle: "version {{data[vocab_name+'-metadata']['schema:version']}}",
+    shortName: "dqv4ai",
+    title: "DQV4AI",
+    subtitle: "Taxonomy for ISO 25059",
     publishDate: "{{data[vocab_name+'-metadata']['dct:modified']}}",
-    specStatus: "{{vocab_name|get_document_status}}",
-    group: "dpvcg",
-    latestVersion: "https://w3id.org/dpv/pd",
-    canonicalUri: "https://w3id.org/dpv/pd",
-    edDraftURI: "https://dev.dpvcg.org/pd",
-    github: "w3c/dpv",
-    subjectPrefix: "[pd]",
+    specStatus: "UD",
     doJsonLd: true,
     lint: { "no-unused-dfns": false, "local-refs-exist": true },
     editors: [
-    {
-      name: "Harshvardhan J. Pandit",
-      url: "https://harshp.com/",
-      "company": "{{ "Harshvardhan J. Pandit" | generate_author_affiliation }}"
-    }
-    ],
-    authors: {{ authors_list(data, vocab_name) }},
-    otherLinks: [
       {
-        "key": "This Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/{{DPV_VERSION}}/pd",
-              "href": "https://w3id.org/dpv/{{DPV_VERSION}}/pd"
-            }
-        ]
-      },
-      {
-        "key": "Previous Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/{{DPV_PREVIOUS_VERSION}}/pd",
-              "href": "https://w3id.org/dpv/{{DPV_PREVIOUS_VERSION}}/pd"
-            }
-        ]
-      },
-      {
-        "key": "Changelog",
-        "data": [
-            {
-              "value": "Changelog for v{{DPV_VERSION}}",
-              "href": "../changelog"
-            }
-        ]
-      },
-      {
-        "key": "Key Publications",
-        "data": [
-            {
-              "value": "Data Privacy Vocabulary (DPV) -- Version 2.0 (2024)",
-              "href": "https://doi.org/10.1007/978-3-031-77847-6_10"
-            },
-            {
-              "value": "Creating a Vocabulary for Data Privacy (2019)",
-              "href": "https://doi.org/10.1007/978-3-030-33246-4_44"
-            }
-        ]
+        name: "Anonymous"
       }
     ],
     localBiblio: {%  include 'references.json' %}
@@ -78,18 +27,14 @@
 </script>
 {% endblock RESPEC %}
 <link rel="stylesheet" type="text/css" href="../css/common.css">
-<link rel="shortcut icon" href="../diagrams/favicon-16x16.png" type="image/x-icon" sizes="16x16" />
-  <link rel="shortcut icon" href="../diagrams/favicon-32x32.png" type="image/x-icon" sizes="32x32" />
 </head>
 <body>
-  {{ contributors_list(data, vocab_name) }}
 {% block INTRODUCTION %}
   <section id="abstract">
     <p>Abstract ...</p>
   </section>
 
   <section id="sotd">
-    <p>status</p>
   </section>
 {% endblock INTRODUCTION %}
 {% block VOCAB %}
@@ -114,7 +59,7 @@
 
 <section id="vocabulary">
 <h2>Vocabulary Index</h2>
-    {{ index_concepts(vocab, vocab_name) }}
+    {{ index_concepts(vocab, vocab_name, filter='external', skip_heading=True) }}
 </section>
 
 <script type="text/javascript" src="../js/common.js" defer></script>

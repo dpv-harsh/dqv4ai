@@ -71,5 +71,5 @@ ieee-7012,https://w3id.org/dpv/standards/ieee/7012#,Concepts for IEEE 7012,02/02
 de-gdng,https://w3id.org/dpv/legal/de/gdng#,GDNG (DE) concepts extending DPV,28/01/2026,approved,,,
 in-dpdp,https://w3id.org/dpv/legal/in/dpdp#,DPDP (IN) concepts extending DPV,22/02/2026,approved,,,
 aiqv,https://w3id.org/dpv/aiqv#,AIQV,12/05/2026,approved,,,
-iso-25059,https://w3id.org/dpv/aiqv/iso-25059#,DQV,12/05/2026,approved,,,
-eu-aiact,https://w3id.org/dpv/aiqv/eu-aiact#,DQV,12/05/2026,approved,,,
+iso-25059,https://w3id.org/dqv4ai/iso-25059#,DQV,12/05/2026,approved,,,
+eu-aiact,https://w3id.org/dqv4ai/eu-aiact#,DQV,12/05/2026,approved,,,

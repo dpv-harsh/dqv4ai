@@ -4,120 +4,68 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}{{data[vocab_name+'-metadata']['dct:title']}} ({{vocab_name|upper}}){% endblock title %}</title>
+  <title>{% block title %}DQV4AI{% endblock title %}</title>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   {% block RESPEC %}
   <script class="remove">
    // All config options at https://respec.org/docs/ 
    var respecConfig = {
-    shortName: "pd",
-    title: "{{data[vocab_name+'-metadata']['dct:title']}} ({{vocab_name|upper}})",
-    subtitle: "version {{data[vocab_name+'-metadata']['schema:version']}}",
+    shortName: "dqv4ai",
+    title: "DQV4AI",
+    subtitle: "Taxonomy for EU AI Act",
     publishDate: "{{data[vocab_name+'-metadata']['dct:modified']}}",
-    specStatus: "{{vocab_name|get_document_status}}",
-    group: "dpvcg",
-    latestVersion: "https://w3id.org/dpv/pd",
-    canonicalUri: "https://w3id.org/dpv/pd",
-    edDraftURI: "https://dev.dpvcg.org/pd",
-    github: "w3c/dpv",
-    subjectPrefix: "[pd]",
+    specStatus: "UD",
     doJsonLd: true,
     lint: { "no-unused-dfns": false, "local-refs-exist": true },
     editors: [
-    {
-      name: "Harshvardhan J. Pandit",
-      url: "https://harshp.com/",
-      "company": "{{ "Harshvardhan J. Pandit" | generate_author_affiliation }}"
-    }
-    ],
-    authors: {{ authors_list(data, vocab_name) }},
-    otherLinks: [
       {
-        "key": "This Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/{{DPV_VERSION}}/pd",
-              "href": "https://w3id.org/dpv/{{DPV_VERSION}}/pd"
-            }
-        ]
-      },
-      {
-        "key": "Previous Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/{{DPV_PREVIOUS_VERSION}}/pd",
-              "href": "https://w3id.org/dpv/{{DPV_PREVIOUS_VERSION}}/pd"
-            }
-        ]
-      },
-      {
-        "key": "Changelog",
-        "data": [
-            {
-              "value": "Changelog for v{{DPV_VERSION}}",
-              "href": "../changelog"
-            }
-        ]
-      },
-      {
-        "key": "Key Publications",
-        "data": [
-            {
-              "value": "Data Privacy Vocabulary (DPV) -- Version 2.0 (2024)",
-              "href": "https://doi.org/10.1007/978-3-031-77847-6_10"
-            },
-            {
-              "value": "Creating a Vocabulary for Data Privacy (2019)",
-              "href": "https://doi.org/10.1007/978-3-030-33246-4_44"
-            }
-        ]
+        name: "Anonymous"
       }
     ],
     localBiblio: {%  include 'references.json' %}
   };
 </script>
 {% endblock RESPEC %}
-<link rel="stylesheet" type="text/css" href="../diagrams/common.css">
-<link rel="shortcut icon" href="../diagrams/favicon-16x16.png" type="image/x-icon" sizes="16x16" />
-  <link rel="shortcut icon" href="../diagrams/favicon-32x32.png" type="image/x-icon" sizes="32x32" />
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
-  {{ contributors_list(data, vocab_name) }}
-{% block ABSTRACT %}
-  <section id="abstract">
-    <p>The Personal Data (PD) extension provides additional concepts to represent different types and categories of personal data for use with the [[[DPV]]]. The canonical URL for PD extension is <a href="https://w3id.org/dpv/pd">https://w3id.org/dpv/pd</a> and the namespace for terms is <a href="https://w3id.org/dpv/pd#"><code>https://w3id.org/dpv/pd#</code></a>, the suggested prefix is <code>pd</code>, and this document along with source and releases are available at <a href="https://github.com/w3c/dpv">https://github.com/w3c/dpv</a>.</p>
-  </section>
-    {{ sotd(DPV_VERSION=DPV_VERSION, metadata=data[vocab_name+'-metadata']) }}
-    {{ dpv_document_family(document='pd-spec') }}
-{% endblock ABSTRACT %}
 {% block INTRODUCTION %}
+  <section id="abstract">
+    <p>Abstract ...</p>
+  </section>
+  <section id="sotd">
+  </section>
 
 {% endblock INTRODUCTION %}
 {% block VOCAB %}
   <section id="vocab-core">
-    <h2>Categorisation of Concepts</h2>
-    <figure>
-      <img src="../diagrams/PD.svg">
-      <figcaption></figcaption>
-    </figure>
-    <p>[[[PD]]] provides additional concepts that extend the DPV's personal data taxonomy based on an opinionated structure contributed by R. Jason Cronk from <a href="https://enterprivacy.com/">EnterPrivacy</a>. This separation is to enable adopters to decide whether the extension's concepts are useful to them, or to use other external vocabularies, or define their own.</p>
-    <aside class="note" title="Relation to Other Vocabularies">
-      <p>DPV's list of concepts is not universal nor exhaustive. It also is opinionated in that there are other vocabularies with different perspectives on categorisation of personal data concepts. The DPVCG welcomes discussions and contributions to identify and represent other external vocabularies, including how they relate to the PD extension.</p>
-    </aside>
-    <p>Concepts within [[PD]] are broadly structured in top-down fashion by utilising their relevance and origin as:</p>
-    <ul>
-        <li>Internal (within the person): e.g. Preferences, Knowledge, Beliefs</li>
-        <li>External (visible to others): e.g. Behavioural, Demographics, Physical, Sexual, Identifying</li>
-        <li>Household: e.g. personal or household activities</li>
-        <li>Social: e.g. Family, Friends, Professional, Public Life, Communication</li>
-        <li>Financial: e.g. Transactional, Ownership, Financial Account</li>
-        <li>Tracking: e.g. Location, Device based, Contact</li>
-        <li>Historical: e.g. Life History</li>
-      </ul>
-    {{ list_hierarchy(modules['core']['classes']) }}
+    <h2>Vocabulary</h2>
+    <section id="dimensions">
+      <h3>Dimensions</h3>
+      {{ list_hierarchy(modules['core']['classes'], head='dqv:Dimension') }}
+    </section>
+    <section id="categories">
+      <h3>Categories</h3>
+      {% for category in vocab|filter_type_dict('dqv:Category') %}
+        {% set category = category|resolve_concepts %}
+        <section id="{{ category['Term'] }}">
+          <h4>{{ category['skos:prefLabel'] }}</h4>
+          {{ list_hierarchy(modules['core']['classes'], head='dqv:Dimension', mode=None, prop='dqv:inCategory', value=category['prefixed']) }}
+        </section>
+      {% endfor %}
+    </section>
+    <section id="metrics">
+      <h3>Metrics</h3>
+      {{ list_hierarchy(modules['core']['classes'], head='dqv:Metric') }}
+    </section>
   </section>
 {% endblock VOCAB %}
 
-<script type="text/javascript" src="../diagrams/common.js" defer></script>
+<section id="vocabulary">
+<h2>Vocabulary Index</h2>
+    {{ index_concepts(vocab, vocab_name, filter='external', skip_heading=True) }}
+</section>
+
+<script type="text/javascript" src="../js/common.js" defer></script>
 </body>
 </html>

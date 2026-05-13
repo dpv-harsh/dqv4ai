@@ -209,7 +209,7 @@ RDF_VOCABS = {
             "dct:description": "AIQV",
             "dct:created": "2026-05-12",
             "dct:modified": "2026-05-12",
-            "dct:creator": "Harshvardhan J. Pandit",
+            "dct:creator": "Anonymous",
             "schema:version": "0.1",
             "profile:isProfileOf": "",
             "bibo:status": "published",
@@ -220,7 +220,7 @@ RDF_VOCABS = {
         'template': 'template_aiqv_eu_aiact.jinja2',
         'export': 'public/eu-aiact',
         'modules': {
-            'core': 'public/iso-25059/modules/core.ttl',
+            'core': 'public/eu-aiact/modules/core.ttl',
         },
         'module-template': {
         },
@@ -229,7 +229,7 @@ RDF_VOCABS = {
             "dct:description": "AIQV",
             "dct:created": "2026-05-12",
             "dct:modified": "2026-05-12",
-            "dct:creator": "Harshvardhan J. Pandit",
+            "dct:creator": "Anonymous",
             "schema:version": "0.1",
             "profile:isProfileOf": "",
             "bibo:status": "published",

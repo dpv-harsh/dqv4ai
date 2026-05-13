@@ -2,675 +2,1849 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>AIQV (EU-AIACT)</title>
+  <title>DQV4AI</title>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script class="remove">
    // All config options at https://respec.org/docs/ 
    var respecConfig = {
-    shortName: "pd",
-    title: "AIQV (EU-AIACT)",
-    subtitle: "version 0.1",
+    shortName: "dqv4ai",
+    title: "DQV4AI",
+    subtitle: "Taxonomy for EU AI Act",
     publishDate: "2026-05-12",
-    specStatus: "CG-DRAFT",
-    group: "dpvcg",
-    latestVersion: "https://w3id.org/dpv/pd",
-    canonicalUri: "https://w3id.org/dpv/pd",
-    edDraftURI: "https://dev.dpvcg.org/pd",
-    github: "w3c/dpv",
-    subjectPrefix: "[pd]",
+    specStatus: "UD",
     doJsonLd: true,
     lint: { "no-unused-dfns": false, "local-refs-exist": true },
     editors: [
-    {
-      name: "Harshvardhan J. Pandit",
-      url: "https://harshp.com/",
-      "company": "ADAPT"
-    }
-    ],
-    authors: [  { 
-    "name": "Harshvardhan J. Pandit",
-    "company": "ADAPT"  }
-]
-,
-    otherLinks: [
       {
-        "key": "This Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/2.4-dev/pd",
-              "href": "https://w3id.org/dpv/2.4-dev/pd"
-            }
-        ]
-      },
-      {
-        "key": "Previous Release",
-        "data": [
-            {
-              "value": "https://w3id.org/dpv/2.3/pd",
-              "href": "https://w3id.org/dpv/2.3/pd"
-            }
-        ]
-      },
-      {
-        "key": "Changelog",
-        "data": [
-            {
-              "value": "Changelog for v2.4-dev",
-              "href": "../changelog"
-            }
-        ]
-      },
-      {
-        "key": "Key Publications",
-        "data": [
-            {
-              "value": "Data Privacy Vocabulary (DPV) -- Version 2.0 (2024)",
-              "href": "https://doi.org/10.1007/978-3-031-77847-6_10"
-            },
-            {
-              "value": "Creating a Vocabulary for Data Privacy (2019)",
-              "href": "https://doi.org/10.1007/978-3-030-33246-4_44"
-            }
-        ]
+        name: "Anonymous"
       }
     ],
     localBiblio: {}  };
 </script>
-<link rel="stylesheet" type="text/css" href="../diagrams/common.css">
-<link rel="shortcut icon" href="../diagrams/favicon-16x16.png" type="image/x-icon" sizes="16x16" />
-  <link rel="shortcut icon" href="../diagrams/favicon-32x32.png" type="image/x-icon" sizes="32x32" />
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
-  
   <section id="abstract">
-    <p>The Personal Data (PD) extension provides additional concepts to represent different types and categories of personal data for use with the [[[DPV]]]. The canonical URL for PD extension is <a href="https://w3id.org/dpv/pd">https://w3id.org/dpv/pd</a> and the namespace for terms is <a href="https://w3id.org/dpv/pd#"><code>https://w3id.org/dpv/pd#</code></a>, the suggested prefix is <code>pd</code>, and this document along with source and releases are available at <a href="https://github.com/w3c/dpv">https://github.com/w3c/dpv</a>.</p>
+    <p>Abstract ...</p>
   </section>
-    <div id="dpv-document-family" class="notoc">
-  <p><strong>DPV Specifications:</strong> The [[DPV]] is the core specification that is extended by specific extensions. A [[PRIMER]] introduces the concepts and modelling of DPV specifications, and [[GUIDES]] describe application of DPV for specific applications and use-cases. The <a href="https://w3id.org/dpv/2.4-dev/search">Search Index</a> page provides a searchable hierarchy of all concepts. The <a href="https://www.w3.org/community/dpvcg/">Data Privacy Vocabularies and Controls Community Group (DPVCG)</a> develops and manages these specifications through <a href="https://github.com/w3c/dpv/releases">GitHub</a>. For meetings, see the <a href="https://www.w3.org/groups/cg/dpvcg/calendar">DPVCG calendar</a>.</p>
-  <p>The peer-reviewed article "<a href="https://doi.org/10.1007/978-3-031-77847-6_10">Data Privacy Vocabulary (DPV) - Version 2.0</a>" (2024) describes the current state of DPV and extensions from version 2.0 onwards, with an <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-33246-4_44">earlier article</a> (2019) covering how the DPV was developed (open access versions <a href="http://hdl.handle.net/2262/91581"><u>here</u></a>, <a href="http://doras.dcu.ie/23801/"><u>here</u></a>, and <a href="https://aic.ai.wu.ac.at/~polleres/publications/pand-etal-2019ODBASE.pdf"><u>here</u></a>).
-  <p><strong>Contributing:</strong> The DPVCG welcomes participation to improve the DPV and associated resources, including expansion or refinement of concepts, requesting information and applications, and addressing open issues. <a href="https://github.com/w3c/dpv/wiki/Contribution-Guide">See contributing guide</a> for further information.</p>
-</div>
-<section id="sotd">
-</section>
-
-    
+  <section id="sotd">
+  </section>
 
   <section id="vocab-core">
-    <h2>Categorisation of Concepts</h2>
-    <figure>
-      <img src="../diagrams/PD.svg">
-      <figcaption></figcaption>
-    </figure>
-    <p>[[[PD]]] provides additional concepts that extend the DPV's personal data taxonomy based on an opinionated structure contributed by R. Jason Cronk from <a href="https://enterprivacy.com/">EnterPrivacy</a>. This separation is to enable adopters to decide whether the extension's concepts are useful to them, or to use other external vocabularies, or define their own.</p>
-    <aside class="note" title="Relation to Other Vocabularies">
-      <p>DPV's list of concepts is not universal nor exhaustive. It also is opinionated in that there are other vocabularies with different perspectives on categorisation of personal data concepts. The DPVCG welcomes discussions and contributions to identify and represent other external vocabularies, including how they relate to the PD extension.</p>
-    </aside>
-    <p>Concepts within [[PD]] are broadly structured in top-down fashion by utilising their relevance and origin as:</p>
-    <ul>
-        <li>Internal (within the person): e.g. Preferences, Knowledge, Beliefs</li>
-        <li>External (visible to others): e.g. Behavioural, Demographics, Physical, Sexual, Identifying</li>
-        <li>Household: e.g. personal or household activities</li>
-        <li>Social: e.g. Family, Friends, Professional, Public Life, Communication</li>
-        <li>Financial: e.g. Transactional, Ownership, Financial Account</li>
-        <li>Tracking: e.g. Location, Device based, Contact</li>
-        <li>Historical: e.g. Life History</li>
-      </ul>
-    <div class="list-hierarchy"><ul class="concept-list">
+    <h2>Vocabulary</h2>
+    <section id="dimensions">
+      <h3>Dimensions</h3>
+      <div class="list-hierarchy"><ul class="concept-list">
   <li>
-    <strong>iso-25059:Acceptability</strong>: Extent to which a human response is favourable when accepting or installing a product, system or service software tool designed to perform some frequently used function
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Acceptability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Compliance</strong>: Extent to which a user or other stakeholder has confidence that a product, system, software, or service in use meets requirements, as required by rules or laws
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Compliance" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Experience</strong>: Extent to which users or stakeholders accumulate knowledge or skill acquired over time, especially that gained in a particular profession
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Experience" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Transparency</strong>: Degree to which appropriate information about the AI system is communicated to relevant stakeholders
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Transparency" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Trustworthiness</strong>: Extent to which users or stakeholders  have confidence that their expectations are met in a verifiable way
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Trustworthiness" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:AIServiceQuality</strong>: MISSING
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#AIServiceQuality" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Beneficialness</strong>: Extent of benefit resulting from the use of a product, system or service
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Beneficialness" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Accessibility</strong>: Extent to which products, systems, services, environments and facilities can be used by people from a population with the widest range of user needs, characteristics and capabilities to achieve identified goals in identified contexts of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Accessibility" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Suitability</strong>: [rdflib.term.Literal(&#39;Extent to which behaviours or outcomes, or both, of a product meet specified quality requirements when used&#39;, lang=&#39;en&#39;), rdflib.term.Literal(&#39;Degree to which an AI service meets stated and implied needs when used in a specified context of use&#39;, lang=&#39;en&#39;)]
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Suitability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Appropriateness</strong>: Degree to which an IT service provides results that are appropriate for the user  needs
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Appropriateness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Completeness</strong>: Degree to which an AI service supports all the specified goals, objectives and data specified by the user
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Completeness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Consistency</strong>: Degree to which repeated or similar related IT services provided consistent quality
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Consistency" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Correctness</strong>: Degree to which an IT service uses the correct process and produces the correct results with accurate data
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Correctness" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Usability</strong>: Extent to which a system, product or service can be used by specified users  to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Usability" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Compatibility</strong>: Capability of a product to exchange information with other products, and/or to perform its required functions while sharing the same common environment and resources
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Compatibility" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Coexistence</strong>: Capability of a product to perform its required functions efficiently while sharing a common environment and resources with other products, without detrimental impact on any other product
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Coexistence" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Interoperability</strong>: Capability of a product to exchange information with other products and mutually use the information that has been exchanged
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Interoperability" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Flexibility</strong>: Capability of a product to be adapted to changes in its requirements, contexts of use, or system environment
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Flexibility" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Adaptability</strong>: Capability of a product to be effectively and efficiently adapted for or transferred to different hardware, software or other operational or usage environments
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Adaptability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Installability</strong>: Capability of a product to be effectively and efficiently installed successfully and/or uninstalled in a specified environment
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Installability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Replaceability</strong>: Capability of a product to replace another specified product for the same purpose in the same environment
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Replaceability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Scalability</strong>: Capability of a product to handle growing or shrinking workloads or to adapt its capacity to handle variability
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Scalability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Testability</strong>: Capability of a product to enable an objective and feasible test to be designed and performed to determine whether a requirement is met
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Testability" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:FunctionalSuitability</strong>: Capability of a product to provide functions that meet stated and implied needs of intended users when it is used under specified conditions.
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FunctionalSuitability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:FunctionalAdaptability</strong>: Degree to which an AI system can accurately acquire information from data, or the result of previous actions,
-and use that information in future predictions
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FunctionalAdaptability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:FunctionalAppropriateness</strong>: Capability of a product to provide functions that facilitate the accomplishment of specified tasks and objectives.
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FunctionalAppropriateness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:FunctionalCompleteness</strong>: Capability of a product to provide a set of functions that covers all the specified tasks and intended users’ objectives.
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FunctionalCompleteness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:FunctionalCorrectness</strong>: Degree to which a product or system provides the correct results with the needed degree of precision
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FunctionalCorrectness" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:InteractionCapability</strong>: Capability of a product to be interacted with by specified users to exchange information between a user and a system via the user interface to complete the intended task
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#InteractionCapability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:AppropriatenessRecognizability</strong>: Capability of a product to be recognized by users as appropriate for their needs
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#AppropriatenessRecognizability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Inclusivity</strong>: Capability of a product to be utilised by people of various backgrounds
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Inclusivity" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Learnability</strong>: Capability of a product to have specified users learn to use specified product functions within a specified amount of time
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Learnability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Operability</strong>: Capability of a product to have functions and attributes that make it easy to operate and control
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Operability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Selfdescriptiveness</strong>: Capability of a product to present appropriate information, where needed by the user, to make its capabilities and use immediately obvious to the user without excessive interactions with a product or other resources
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Selfdescriptiveness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Transparency</strong>: Degree to which appropriate information about the AI system is communicated to relevant stakeholders
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Transparency" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:UserAssistance</strong>: Capability of a product to be used by people with the widest range of characteristics and capabilities to achieve specified goals in a specified context of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#UserAssistance" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:UserControllability</strong>: Degree to which a user can appropriately intervene in an AI system’s functioning in a timely manner
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#UserControllability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:UserEngagement</strong>: Capability of a product to present functions and information in an inviting and motivating manner encouraging continued interaction
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#UserEngagement" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:UserErrorProtection</strong>: Capability of a product to prevent operation errors
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#UserErrorProtection" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Maintainability</strong>: Capability of a product to be modified by the intended maintainers with effectiveness and efficiency
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Maintainability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Analysability</strong>: Capability of a product to be effectively and efficiently assessed regarding the impact of an intended change to one or more of its parts, to diagnose it for deficiencies or causes of failures, or to identify parts to be modified
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Analysability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Modifiability</strong>: Capability of a product to be effectively and efficiently modified without introducing defects or degrading existing product quality
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Modifiability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Modularity</strong>: Capability of a product to limit changes to one component from affecting other components
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Modularity" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Reusability</strong>: Capability of a product to be used as assets in more than one system, or in building other assets
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Reusability" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:PerformanceEfficiency</strong>: Capability of a product to perform its functions within specified time and throughput parameters and be efficient in the use of resources under specified conditions
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#PerformanceEfficiency" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Capacity</strong>: Capability of a product to meet requirements for the maximum limits of a product parameter
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Capacity" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:EnvironmentalSustainability</strong>: State in which the ecosystem and its functions are maintained for the present and future generations
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#EnvironmentalSustainability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:ResourceUtilization</strong>: Capability of a product to use no more than the specified amount of resources to perform its function under specified conditions
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ResourceUtilization" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:TimeBehaviour</strong>: Capability of a product to perform its specified function under specified conditions so that the response time and throughput rates meet the requirements
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#TimeBehaviour" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:ProductQuality</strong>: MISSING
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ProductQuality" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:QualityInUse</strong>: MISSING
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#QualityInUse" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Reliability</strong>: Capability of a product to perform specified functions under specified conditions for a specified period of time without interruptions and failures
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Reliability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Availability</strong>: Capability of a product to be operational and accessible when required for use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Availability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Faultlessness</strong>: Capability of a product to perform specified functions without fault under normal operation
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Faultlessness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:FaultTolerance</strong>: Capability of a product to operate as intended despite the presence of hardware or software faults
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FaultTolerance" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Recoverability</strong>: Capability of a product in the event of an interruption or a failure to recover the data directly affected and re-establish the desired state of the system
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Recoverability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Robustness</strong>: Degree to which an AI system can maintain its level of functional correctness under any circumstances
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Robustness" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Responsiveness</strong>: Degree to which an AI service responds and provides outcomes in a prompt and timely way
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Responsiveness" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Reactiveness</strong>: Degree to which the AI service promptly responds to user  requests
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Reactiveness" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Timeliness</strong>: Degree to which an AI service delivers outcomes within time limits
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Timeliness" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:RiskMitigation</strong>: Extent to which a product  or system  mitigates the potential risk to economic status, human life, health, society, financial values, enterprise activities, or the environment
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#RiskMitigation" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:EconomicRiskMitigation</strong>: Extent to which a product or system mitigates the potential risk to financial status, efficient operation, commercial property, reputation, or other aspects in the intended contexts of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#EconomicRiskMitigation" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:EnvironmentalRiskMitigation</strong>: Degree to which a product or system mitigates the potential risk to the environment in the intended contexts of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#EnvironmentalRiskMitigation" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:HealthRiskMitigation</strong>: Extent to which a product or system  mitigates the potential risk to people’s health in the intended contexts of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#HealthRiskMitigation" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:HumanLifeRiskMitigation</strong>: Extent to which a product  or system mitigates the potential risk to people’s lives in the intended contexts of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#HumanLifeRiskMitigation" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:SocietalAndEthicalRiskMitigation</strong>: Degree to which a product or system mitigates the potential societal or ethical risks
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#SocietalAndEthicalRiskMitigation" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Safety</strong>: Capability of a product under defined conditions to avoid a state in which human life, health, property, or the environment is endangered
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Safety" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:FailSafe</strong>: Capability of a product to automatically place itself in a safe operating mode, or to revert to a safe condition in the event of a failure
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#FailSafe" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:HazardWarning</strong>: Capability of a product to provide warnings of unacceptable risks to operations or internal controls so that they can react in sufficient time to sustain safe operations
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#HazardWarning" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:OperationalConstraint</strong>: Capability of a product to constrain its operation to within safe parameters or states when encountering operational hazard
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#OperationalConstraint" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:RiskIdentification</strong>: Capability of a product to identify a course of events or operations that can expose life, property or environment to unacceptable risk
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#RiskIdentification" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:SafeIntegration</strong>: Capability of a product to maintain safety during and after integration with one or more components
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#SafeIntegration" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:Security</strong>: Capability of a product to protect information and data so that persons or other products have the degree of data access appropriate to their types and levels of authorization, and to defend against attack patterns by malicious actors
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Security" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Accountability</strong>: Capability of a product to enable actions of an entity to be traced uniquely to the entity
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Accountability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Authenticity</strong>: Capability of a product to prove that the identity of a subject or resource is the one claimed
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Authenticity" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Confidentiality</strong>: Capability of a product to ensure that data are accessible only to those authorized to have access
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Confidentiality" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Integrity</strong>: Capability of a product to ensure that the state of its system and data are protected from unauthorized modification or deletion either by malicious action or computer error
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Integrity" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Intervenability</strong>: Degree to which an operator can intervene in an AI system’s functioning in a timely manner to prevent harm or hazard
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Intervenability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Non-repudiation</strong>: Capability of a product to prove that actions or events have taken place, so that the events or actions cannot be repudiated later
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Non-repudiation" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Resistance</strong>: Capability of a product to sustain operations while under attack from a malicious actor
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Resistance" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:ServiceAdaptability</strong>: Degree to which a service can be adapted based on factors such as functions, responsibility, skill of
-employees, communication style with users or instruments available
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceAdaptability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Customizability</strong>: Degree to which the AI service can be customized at the request of users
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Customizability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:Initiative</strong>: Degree to which the AI service recognizes users’ goals and service suggests changes to meet users’ needs
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Initiative" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:ServiceMaintainability</strong>: Degree of effectiveness and efficiency with which the AI service can be modified by the service provider
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceMaintainability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:ServiceAnalysability</strong>: Degree of effectiveness and efficiency with which an AI service can be analysed for deficiencies, gaps and failures
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceAnalysability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:ServiceModifiability</strong>: Degree to which an AI service can be effectively and efficiently modified without introducing defects or degrading existing AI service quality
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceModifiability" class="local-link">go to full definition</a></small>
-      
-  </li>
-  <li>
-    <strong>iso-25059:ServiceTestability</strong>: Degree of effectiveness and efficiency with which test criteria can be established for an AI service and tests can be performed to determine whether those criteria have been met
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceTestability" class="local-link">go to full definition</a></small>
-      
-  </li>
-</ul>
-  </li>
-  <li>
-    <strong>iso-25059:ServiceReliability</strong>: Degree to which an AI service provides consistent and stable AI service outcomes
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceReliability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Continuity</strong>: Degree to which the AI service is provided under all foreseeable circumstances, including mitigating the risks resulting from interruption to an acceptable level
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Continuity" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:Accuracy</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Accuracy" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceAvailability</strong>: Degree to which an AI service is available to users when needed
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceAvailability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:ComputationalPerformance</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceRecoverability</strong>: Degree to which, in the event of an interruption or a failure or disaster, the original AI service and its functions and data can be re-established and made accessible
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceRecoverability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataAvailability</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataAvailability" class="local-link">go to full definition</a></small>
       
-  </li>
-</ul>
   </li>
   <li>
-    <strong>iso-25059:ServiceSecurity</strong>: Degree to which an AI service protects both user’s assets and access to their information so that users have the degree of information access appropriate to their levels of authorization
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceSecurity" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:ServiceConfidentiality</strong>: Degree to which an AI service ensures that data are accessible only to those authorized to have access
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceConfidentiality" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataCompleteness</strong>: Completeness of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataCompleteness" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceIntegrity</strong>: Degree to which an AI service prevents unauthorized access to or modification of data whether accidently or intentionally
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceIntegrity" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataQuantity</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataQuantity" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:Traceability</strong>: Degree to which the AI service outcomes can be traced to or from the user needs
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Traceability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataRelevance</strong>: Relevance of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataRelevance" class="local-link">go to full definition</a></small>
       
-  </li>
-</ul>
   </li>
   <li>
-    <strong>iso-25059:ServiceUsability</strong>: Degree to which an AI service can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceUsability" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Courtesy</strong>: Degree to which the AI service is provided in a polite, respectful and friendly way
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Courtesy" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataRepresentativeness</strong>: Representativeness of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataRepresentativeness" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceAccessibility</strong>: Degree to which an AI service can be used by people with the widest range of characteristics and capabilities to achieve a specified goal in a specified context of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceAccessibility" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:DataSuitability</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataSuitability" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceAppropriatenessRecognizability</strong>: Degree to which users  can recognize whether an AI service is appropriate for their needs
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceAppropriatenessRecognizability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:ErrorFree</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ErrorFree" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceLearnability</strong>: Degree to which an AI service can be learned by users to achieve a specified level of effectiveness, efficiency, freedom from risk and satisfaction within a specified amount of time and context of use
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceLearnability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:FaultTolerance</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#FaultTolerance" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceOperability</strong>: Degree to which an AI service has attributes that make it easy to operate and control
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceOperability" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:Interpretability</strong>: Interpretabilty of system’s output
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Interpretability" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceUserErrorProtection</strong>: Degree to which an AI service protects users against making errors
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceUserErrorProtection" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:Resilience</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Resilience" class="local-link">go to full definition</a></small>
       
-  </li>
-</ul>
   </li>
   <li>
-    <strong>iso-25059:Tangibility</strong>: Degree to which the tangible aspects of the AI service effectively communicate and support the service
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Tangibility" class="local-link">go to full definition</a></small>
-      <ul class="concept-list">
-  <li>
-    <strong>iso-25059:Professionalism</strong>: Degree to which the content of the AI service is based on appropriate education, skill, expertise and qualification
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Professionalism" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:Robustness</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Robustness" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:ServiceInterfaceAppearance</strong>: Degree to which the interface of the service has an appearance or other physical properties that are pleasing and satisfying for the user
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#ServiceInterfaceAppearance" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:SystemPerformance</strong>: performance of an AI system means the ability of an AI system to achieve its intended purpose
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#SystemPerformance" class="local-link">go to full definition</a></small>
       
   </li>
   <li>
-    <strong>iso-25059:Visibility</strong>: Degree to which users have insight into the capabilities of the AI service, how they will be delivered, and progress toward their completion during delivery
-      <small><a href="https://w3id.org/dpv/aiqv/iso-25059#Visibility" class="local-link">go to full definition</a></small>
+    <strong>eu-aiact:Transparency</strong>: Transparency of the operation of AI system
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Transparency" class="local-link">go to full definition</a></small>
       
-  </li>
-</ul>
   </li>
 </ul></div>
+    </section>
+    <section id="categories">
+      <h3>Categories</h3>
+        <section id="">
+          <h4>System Quality</h4>
+          <div class="list-hierarchy"><ul class="concept-list">
+  <li>
+    <strong>eu-aiact:Accuracy</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Accuracy" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:FaultTolerance</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#FaultTolerance" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:Interpretability</strong>: Interpretabilty of system’s output
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Interpretability" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:Resilience</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Resilience" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:Robustness</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Robustness" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:SystemPerformance</strong>: performance of an AI system means the ability of an AI system to achieve its intended purpose
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#SystemPerformance" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:Transparency</strong>: Transparency of the operation of AI system
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Transparency" class="local-link">go to full definition</a></small>
+      
+  </li>
+</ul></div>
+        </section>
+        <section id="">
+          <h4>Model Quality</h4>
+          <div class="list-hierarchy"><ul class="concept-list">
+  <li>
+    <strong>eu-aiact:ComputationalPerformance</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:Transparency</strong>: Transparency of the operation of AI system
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#Transparency" class="local-link">go to full definition</a></small>
+      
+  </li>
+</ul></div>
+        </section>
+        <section id="">
+          <h4>Data Quality</h4>
+          <div class="list-hierarchy"><ul class="concept-list">
+  <li>
+    <strong>eu-aiact:DataAvailability</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataAvailability" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:DataCompleteness</strong>: Completeness of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataCompleteness" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:DataQuantity</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataQuantity" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:DataRelevance</strong>: Relevance of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataRelevance" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:DataRepresentativeness</strong>: Representativeness of Training, validation and testing data sets in respect to the intended purpose.
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataRepresentativeness" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:DataSuitability</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#DataSuitability" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:ErrorFree</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ErrorFree" class="local-link">go to full definition</a></small>
+      
+  </li>
+</ul></div>
+        </section>
+    </section>
+    <section id="metrics">
+      <h3>Metrics</h3>
+      <div class="list-hierarchy"><ul class="concept-list">
+  <li>
+    <strong>eu-aiact:FloatingPointOperations</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#FloatingPointOperations" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:ModelTrainingCost</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingCost" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:ModelTrainingEnergyConsumption</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingEnergyConsumption" class="local-link">go to full definition</a></small>
+      
+  </li>
+  <li>
+    <strong>eu-aiact:ModelTrainingTime</strong>: MISSING
+      <small><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingTime" class="local-link">go to full definition</a></small>
+      
+  </li>
+</ul></div>
+    </section>
   </section>
 
-<script type="text/javascript" src="../diagrams/common.js" defer></script>
+<section id="vocabulary">
+<h2>Vocabulary Index</h2>
+              <section class="term-def" id="Accuracy">
+      <h4>Accuracy</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>Accuracy</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Accuracy</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#Accuracy" class="local-link">https://w3id.org/dqv4ai/eu-aiact#Accuracy</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 15</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ComputationalPerformance">
+      <h4>Computational Performance</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ComputationalPerformance</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Computational Performance</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Annex XIII (c)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ModelQuality" class="local-link">Model Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+        <section class="term-def" id="DataAvailability">
+      <h4>Data Availability</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataAvailability</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Availability</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataAvailability" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataAvailability</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(1)(e)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataCompleteness">
+      <h4>Data Completeness</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataCompleteness</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Completeness</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataCompleteness" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataCompleteness</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Completeness of Training, validation and testing data sets in respect to the intended purpose.</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(3)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataQuality">
+      <h4>Data Quality</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataQuality</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Quality</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataQuality</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Quality associated with data and data sets</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataQuantity">
+      <h4>Data Quantity</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataQuantity</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Quantity</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataQuantity" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataQuantity</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(1)(e)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataRelevance">
+      <h4>Data Relevance</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataRelevance</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Relevance</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataRelevance" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataRelevance</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Relevance of Training, validation and testing data sets in respect to the intended purpose.</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(3)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataRepresentativeness">
+      <h4>Data Representativeness</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataRepresentativeness</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Representativeness</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataRepresentativeness" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataRepresentativeness</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Representativeness of Training, validation and testing data sets in respect to the intended purpose.</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(3)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="DataSuitability">
+      <h4>Data Suitability</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>DataSuitability</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Data Suitability</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#DataSuitability" class="local-link">https://w3id.org/dqv4ai/eu-aiact#DataSuitability</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(1)(e)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ErrorFree">
+      <h4>Error Free</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ErrorFree</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Error Free</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ErrorFree" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ErrorFree</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 10(3)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#DataQuality" class="local-link">Data Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="FaultTolerance">
+      <h4>Fault Tolerance</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>FaultTolerance</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Fault Tolerance</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#FaultTolerance" class="local-link">https://w3id.org/dqv4ai/eu-aiact#FaultTolerance</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 15(4)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="FloatingPointOperations">
+      <h4>Floating Point Operations</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>FloatingPointOperations</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Floating Point Operations</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#FloatingPointOperations" class="local-link">https://w3id.org/dqv4ai/eu-aiact#FloatingPointOperations</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Annex XIII (c)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:indimension</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">Computational Performance</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="Interpretability">
+      <h4>Interpretability</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>Interpretability</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Interpretability</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#Interpretability" class="local-link">https://w3id.org/dqv4ai/eu-aiact#Interpretability</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Interpretabilty of system’s output</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 13</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ModelQuality">
+      <h4>Model Quality</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ModelQuality</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Model Quality</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ModelQuality" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ModelQuality</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Quality associated with AI Models</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ModelTrainingCost">
+      <h4>Model Training Cost</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ModelTrainingCost</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Model Training Cost</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingCost" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ModelTrainingCost</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Annex XIII (c)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:indimension</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">Computational Performance</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ModelTrainingEnergyConsumption">
+      <h4>Model Training Energy Consumption</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ModelTrainingEnergyConsumption</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Model Training Energy Consumption</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingEnergyConsumption" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ModelTrainingEnergyConsumption</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Annex XIII (c)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:indimension</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">Computational Performance</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="ModelTrainingTime">
+      <h4>Model Training Time</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>ModelTrainingTime</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Model Training Time</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#ModelTrainingTime" class="local-link">https://w3id.org/dqv4ai/eu-aiact#ModelTrainingTime</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Metric" class="local-link">dqv:Metric</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Annex XIII (c)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:indimension</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ComputationalPerformance" class="local-link">Computational Performance</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="Resilience">
+      <h4>Resilience</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>Resilience</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Resilience</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#Resilience" class="local-link">https://w3id.org/dqv4ai/eu-aiact#Resilience</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 15(4)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="Robustness">
+      <h4>Robustness</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>Robustness</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Robustness</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#Robustness" class="local-link">https://w3id.org/dqv4ai/eu-aiact#Robustness</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>MISSING</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 15</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+        <section class="term-def" id="SystemPerformance">
+      <h4>System Performance</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>SystemPerformance</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>System Performance</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#SystemPerformance" class="local-link">https://w3id.org/dqv4ai/eu-aiact#SystemPerformance</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>performance of an AI system means the ability of an AI system to achieve its intended purpose</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 3(18)</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="SystemQuality">
+      <h4>System Quality</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>SystemQuality</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>System Quality</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">https://w3id.org/dqv4ai/eu-aiact#SystemQuality</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Category" class="local-link">dqv:Category</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Quality associated with AI Systems</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+      <section class="term-def" id="Transparency">
+      <h4>Transparency</h4>
+      <table class="term-contents">
+      <tbody>
+        <tr>
+          <th>Term</th>
+          <td><dfn>Transparency</dfn></td>
+          <th>Prefix</th>
+          <td>eu-aiact</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td><i>Transparency</i></td>
+        </tr>
+        <tr class="technical-detail">
+          <th>IRI</th>
+          <td><a href="https://w3id.org/dqv4ai/eu-aiact#Transparency" class="local-link">https://w3id.org/dqv4ai/eu-aiact#Transparency</a></td>
+        </tr>
+        
+        <tr class="table-separator"></tr>
+        
+        <tr class="technical-detail">
+          <th>Type</th>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Class" class="local-link">rdfs:Class</a>, <a href="http://www.w3.org/2004/02/skos/core#Concept" class="local-link">skos:Concept</a>, <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a></td>
+        </tr>
+       
+        <tr class="technical-detail">
+          <th>Broader/Parent types</th>
+          <td>            <a href="http://www.w3.org/ns/dqv#Dimension" class="local-link">dqv:Dimension</a>
+                        </td>        </tr>      
+      
+       
+
+        
+        
+        
+        
+        <tr class="table-separator"></tr>
+
+<tr>
+          <th>Definition</th>
+          <td><i>Transparency of the operation of AI system</i></td>
+        </tr>        
+       
+       
+
+        <tr class="table-separator"></tr>
+        
+<tr>
+          <th>Source</th>
+          <td><i>AI Act Article 13</i></td>
+        </tr>       
+        
+        <tr class="table-separator"></tr>
+
+        
+       
+
+        <tr class="table-separator"></tr>
+        <tr>
+          <th>dqv:inCategory</th>
+          <td>            <a href="https://w3id.org/dqv4ai/eu-aiact#ModelQuality" class="local-link">Model Quality</a>
+            , 
+            <a href="https://w3id.org/dqv4ai/eu-aiact#SystemQuality" class="local-link">System Quality</a>
+            
+</td>
+        </tr>
+       
+        <tr>
+          <th>See More:</th>
+          <td>              section <a href="https://w3id.org/dqv4ai/eu-aiact#vocab-core">CORE</a> in <a href="https://w3id.org/dqv4ai/eu-aiact#">EU-AIACT</a>
+                      </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+</section>
+
+<script type="text/javascript" src="../js/common.js" defer></script>
 </body>
 </html>
