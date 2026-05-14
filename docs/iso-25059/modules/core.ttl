@@ -19,7 +19,6 @@ iso-25059:AIServiceQuality a rdfs:Class,
     rdfs:isDefinedBy iso-25059: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Category ;
-    skos:definition "MISSING"@en ;
     skos:inScheme iso-25059:core-classes ;
     skos:prefLabel "AI Service Quality"@en .
 
@@ -654,7 +653,6 @@ iso-25059:ProductQuality a rdfs:Class,
     rdfs:isDefinedBy iso-25059: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Category ;
-    skos:definition "MISSING"@en ;
     skos:inScheme iso-25059:core-classes ;
     skos:prefLabel "Product Quality"@en .
 
@@ -676,7 +674,6 @@ iso-25059:QualityInUse a rdfs:Class,
     rdfs:isDefinedBy iso-25059: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Category ;
-    skos:definition "MISSING"@en ;
     skos:inScheme iso-25059:core-classes ;
     skos:prefLabel "Quality In Use"@en .
 

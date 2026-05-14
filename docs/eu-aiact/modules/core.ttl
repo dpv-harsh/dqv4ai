@@ -20,7 +20,6 @@ eu-aiact:Accuracy a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Accuracy"@en ;
     dqv:inCategory eu-aiact:SystemQuality .
@@ -32,7 +31,6 @@ eu-aiact:ComputationalPerformance a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Computational Performance"@en ;
     dqv:inCategory eu-aiact:ModelQuality .
@@ -44,7 +42,6 @@ eu-aiact:DataAvailability a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Data Availability"@en ;
     dqv:inCategory eu-aiact:DataQuality .
@@ -78,7 +75,6 @@ eu-aiact:DataQuantity a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Data Quantity"@en ;
     dqv:inCategory eu-aiact:DataQuality .
@@ -114,7 +110,6 @@ eu-aiact:DataSuitability a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Data Suitability"@en ;
     dqv:inCategory eu-aiact:DataQuality .
@@ -126,7 +121,6 @@ eu-aiact:ErrorFree a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Error Free"@en ;
     dqv:inCategory eu-aiact:DataQuality .
@@ -138,7 +132,6 @@ eu-aiact:FaultTolerance a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Fault Tolerance"@en ;
     dqv:inCategory eu-aiact:SystemQuality .
@@ -150,7 +143,6 @@ eu-aiact:FloatingPointOperations a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Metric ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Floating Point Operations"@en ;
     dqv:indimension eu-aiact:ComputationalPerformance .
@@ -184,7 +176,6 @@ eu-aiact:ModelTrainingCost a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Metric ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Model Training Cost"@en ;
     dqv:indimension eu-aiact:ComputationalPerformance .
@@ -196,7 +187,6 @@ eu-aiact:ModelTrainingEnergyConsumption a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Metric ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Model Training Energy Consumption"@en ;
     dqv:indimension eu-aiact:ComputationalPerformance .
@@ -208,7 +198,6 @@ eu-aiact:ModelTrainingTime a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Metric ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Model Training Time"@en ;
     dqv:indimension eu-aiact:ComputationalPerformance .
@@ -220,7 +209,6 @@ eu-aiact:Resilience a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Resilience"@en ;
     dqv:inCategory eu-aiact:SystemQuality .
@@ -232,7 +220,6 @@ eu-aiact:Robustness a rdfs:Class,
     rdfs:isDefinedBy eu-aiact: ;
     sw:term_status "accepted"@en ;
     skos:broader dqv:Dimension ;
-    skos:definition "MISSING"@en ;
     skos:inScheme eu-aiact:core-classes ;
     skos:prefLabel "Robustness"@en ;
     dqv:inCategory eu-aiact:SystemQuality .
